@@ -22,8 +22,8 @@ class ItemServiceTest {
     @Test
     public void 아이템저장() throws Exception {
         // given
-        Movie movie1 = new Movie("director1", "actor1");
-        
+//        Movie movie1 = new Movie("director1", "actor1");
+
 
         // when
 
