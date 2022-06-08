@@ -1,7 +1,9 @@
 package com.jpa.book.jpashop.domain;
 
 import com.jpa.book.jpashop.domain.Item.Item;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.aspectj.weaver.ast.Or;
 
@@ -12,6 +14,7 @@ import static javax.persistence.FetchType.*;
 @Entity
 @Table(name = "order_item")
 @Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
     @Id @GeneratedValue
     @Column(name = "order_item_id")
@@ -28,6 +31,7 @@ public class OrderItem {
     private int orderPrice;
     private int count;
 
+
     // 생성
     public static OrderItem createOrderItem(Item item, int orderPrice, int count){
         OrderItem orderItem = new OrderItem();
@@ -35,6 +39,7 @@ public class OrderItem {
         orderItem.setOrderPrice(orderPrice);
         orderItem.setCount(count);
 
+        // 재고 수 보다 많은 양을 주문했을 때 여기서 예외 발생
         item.removeStock(count);
         return orderItem;
     }
