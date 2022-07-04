@@ -2,6 +2,7 @@ package com.jpa.book.jpashop.repository;
 
 import com.jpa.book.jpashop.domain.Member;
 import com.jpa.book.jpashop.domain.Order;
+import com.jpa.book.jpashop.repository.order.query.OrderSimpleQueryDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
@@ -96,4 +97,14 @@ public class OrderRepository {
         TypedQuery<Order> query = em.createQuery(cq).setMaxResults(1000); //최대 1000건
         return query.getResultList();
     }
+
+    public List<Order> findAllWidthMemberDelivery() {
+        return em.createQuery(
+                "select o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d", Order.class
+        ).getResultList();
+    }
+
+
 }
