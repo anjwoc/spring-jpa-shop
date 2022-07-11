@@ -3,8 +3,8 @@ package com.jpa.book.jpashop.api;
 import com.jpa.book.jpashop.domain.Order;
 import com.jpa.book.jpashop.repository.OrderRepository;
 import com.jpa.book.jpashop.repository.OrderSearch;
-import com.jpa.book.jpashop.repository.order.query.OrderQueryRepository;
-import com.jpa.book.jpashop.repository.order.query.OrderSimpleQueryDto;
+import com.jpa.book.jpashop.repository.order.simplequery.OrderSimpleQueryRepository;
+import com.jpa.book.jpashop.repository.order.simplequery.OrderSimpleQueryDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class OrderSimpleApiController {
     private final OrderRepository orderRepository;
-    private final OrderQueryRepository orderQueryRepository;
+    private final OrderSimpleQueryRepository orderQueryRepository;
 
     @GetMapping("/api/v1/simple-orders")
     public List<Order> orderV1() {
